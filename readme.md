@@ -38,7 +38,7 @@ The result is **synchronized with the nearest player**, so the coin toss is shar
   - `pile.png` → heads side  
   - `face.png` → tails side  
 
-- In **`shared/config.lua`** (if present):  
+- In **`shared/config.lua`**:  
   - Enable or disable the chat message.  
   - Adjust the distance to detect the nearest player.  
 
