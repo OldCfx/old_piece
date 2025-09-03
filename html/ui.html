@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0; 
+            padding: 0; 
+            overflow: hidden;
+            background: transparent;
+        }
+        #piece {
+            position: absolute;
+            bottom: 10%; 
+            left: 50%;
+            transform: translateX(-50%) rotateY(0deg);
+            width: 120px;
+            height: 120px;
+            background-size: cover;
+            background-position: center;
+            display: none;
+            transition: transform 1s ease-in-out;
+        }
+        #ombre {
+            position: absolute;
+            bottom: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            height: 30px;
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, transparent 80%);
+            border-radius: 50%;
+            opacity: 0;
+        }
+        .pile { background-image: url('pile.png'); }
+        .face { background-image: url('face.png'); }
+    </style>
+</head>
+<body>
+    <div id="piece"></div>
+    <div id="ombre"></div>
+
+    <script>
+        window.addEventListener('message', function(event){
+            if(event.data.action === "show_piece"){
+                const piece = document.getElementById("piece");
+                const ombre = document.getElementById("ombre");
+
+                piece.style.display = "block";
+                ombre.style.opacity = 1;
+
+                
+                piece.style.transform = "translateX(-50%) rotateY(720deg)";
+
+                
+                setTimeout(() => {
+                    piece.className = event.data.resultat;
+                    piece.style.transform = "translateX(-50%) rotateY(0deg) scale(1)";
+                }, 1000);
+
+                
+                setTimeout(() => {
+                    piece.style.display = "none";
+                    ombre.style.opacity = 0;
+                }, 4000);
+            }
+        });
+    </script>
+</body>
+</html>
